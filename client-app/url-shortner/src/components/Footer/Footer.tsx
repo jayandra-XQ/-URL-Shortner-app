@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 
-const App: React.FunctionComponent = () => {
+const Footer: React.FunctionComponent = () => {
   return(
     <div className='bg-slate-900 text-white text-base text-center py-5'>
       Copyright &#169; URLShortner | Jayandra Hamal
@@ -10,4 +10,4 @@ const App: React.FunctionComponent = () => {
   ) ;
 };
 
-export default App;
+export default Footer;
