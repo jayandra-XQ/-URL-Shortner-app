@@ -26,8 +26,16 @@ export const getAllUrl = async (
   req: express.Request,
   res: express.Response
 ) => {
- 
-
+  try {
+    const shortUrls = await urlModel.find()
+    if (shortUrls.length < 0) {
+      res.status(404).send({ message: "short Urls not found" })
+    } else {
+      res.status(200).json(shortUrls)
+    }
+  } catch (error) {
+    res.status(500).json({ message: "something went wrong" })
+  }
 }
 
 export const getUrl = async (
