@@ -42,7 +42,18 @@ export const getUrl = async (
   req: express.Request,
   res: express.Response
 ) => {
-
+ try {
+  const shortUrl = await urlModel.findOne({ shortUrl: req.params.id })
+  if (!shortUrl) {
+    return res.status(404).send({ message: "Full URL not found" })
+  } else {
+    shortUrl.clicks++;
+    shortUrl.save();
+    res.redirect(`${shortUrl.fullUrl}`)
+  }
+ } catch (error) {
+  res.status(500).send({ message:"something went wrong" })
+ }
 }
 
 export const deleteUrl = async (
