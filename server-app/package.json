@@ -4,10 +4,10 @@
   "description": "This project contains url shortner apis",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "build": "npx tsc",
+    "dev": "nodemon ./dist/server.js"
   },
   "author": "Jayandra Hamal",
-  "type": "module",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
@@ -17,6 +17,9 @@
     "nanoid": "^3.0.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "nodemon": "^3.1.7",
+    "typescript": "^5.6.3"
   }
 }
