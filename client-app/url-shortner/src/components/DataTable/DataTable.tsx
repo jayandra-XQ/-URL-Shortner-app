@@ -3,6 +3,7 @@ import { UrlData } from '../../interface/UrlData';
 import { Link } from 'react-router-dom';
 import { serverUrl } from '../../helpers/Constant';
 import toast from 'react-hot-toast';
+import axios from 'axios';
 
 interface IDataTableProps {
   data: UrlData[];
@@ -60,11 +61,17 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
   const copyToClipboard = async (url: string) => {
    try {
     await navigator.clipboard.writeText(`${serverUrl}/shortUrl/${url}`)
-    toast.success('URL copied to clipboard')
+    alert(`URL copied: ${serverUrl}/shortUrl/${url}`)
    } catch (error) {
     console.log(error)
     toast.error('Failed to copy the URL')
    }
+  }
+
+  const deleteUrl = async (id: string) => {
+    const response = await axios.delete(`${serverUrl}/shortUrl/${id}`)
+    console.log(response)
+
   }
 
   return (
