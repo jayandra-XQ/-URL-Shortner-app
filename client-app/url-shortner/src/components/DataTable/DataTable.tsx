@@ -7,11 +7,12 @@ import axios from 'axios';
 
 interface IDataTableProps {
   data: UrlData[];
+  updateReloadState: () => void;
 }
 
 
 const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
-  const { data } = props;
+  const { data , updateReloadState} = props;
   console.log(data)
 
   const renderTableData = () => {
@@ -71,7 +72,7 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
   const deleteUrl = async (id: string) => {
     const response = await axios.delete(`${serverUrl}/shortUrl/${id}`)
     console.log(response)
-
+    updateReloadState()
   }
 
   return (

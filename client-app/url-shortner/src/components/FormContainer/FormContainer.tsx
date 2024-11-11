@@ -3,8 +3,14 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import { serverUrl } from '../../helpers/Constant';
 
-const FormContainer: React.FunctionComponent = () => {
+interface IFormContainerProps {
+  updateReloadState: () => void;
+}
+
+const FormContainer: React.FunctionComponent<IFormContainerProps> = (props) => {
+  const {updateReloadState} = props
   const [fullUrl, setFullUrl] = React.useState<string>("");
+
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,6 +22,7 @@ const FormContainer: React.FunctionComponent = () => {
         fullUrl: fullUrl
       });
       setFullUrl("");
+      updateReloadState()
       toast.success('URL shortened successfully!');
     } catch (error) {
       if (error instanceof Error) {
