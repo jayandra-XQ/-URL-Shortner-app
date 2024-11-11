@@ -1,12 +1,12 @@
-import express from 'express';
+import express, {RequestHandler} from 'express';
 import { createUrl, deleteUrl, getAllUrl, getUrl } from '../controllers/shortUrl';
 
 const router = express.Router();
 
-router.post("/shortUrl", createUrl)
-router.get("/shortUrl", getAllUrl)
-router.get("/shortUrl/:id", getUrl)
-router.delete("/shortUrl/:id", deleteUrl)
+router.post("/shortUrl", createUrl as RequestHandler)
+router.get("/shortUrl", getAllUrl as RequestHandler)
+router.get("/shortUrl/:id", getUrl as RequestHandler)
+router.delete("/shortUrl/:id", deleteUrl as RequestHandler)
 
 
 export default router
